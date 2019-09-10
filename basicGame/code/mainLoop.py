@@ -8,7 +8,7 @@
 
 import pygame, time
 from random import randint
-#from clamObj import Clam
+from roomObj import Obj
 
 
 pygame.init()
@@ -33,6 +33,9 @@ def changeRoom(nuRoom):
 def displayRoom(room):
     pass
 
+def loadRooms():
+    #porchDef = {"id": "porch", "art": ["obj1", "obj2"], "bjCol": BLUE}
+    pass
 
 def gameLoop():
     # init variables
@@ -40,6 +43,10 @@ def gameLoop():
     # sprList is list of objects in the room
 
     gameExit = False
+    box1 = Obj(pygame.image.load())#('arts/clamClose.png'))
+    box2 = Obj(pygame.image.load())#('arts/clamClose.png'))
+    sprList.add(box1)
+    sprList.add(box2)
 
     while not gameExit:
         for event in pygame.event.get():
@@ -50,14 +57,17 @@ def gameLoop():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = event.pos
 
-                # for sprite in sprList:
-                #    if sprite.rect.collidepoint(pos):
-                #          print("OPEN")
-                #          sprite.change()
+                for sprite in sprList:
+                   if sprite.rect.collidepoint(pos):
+                         print("OPEN")
                          #stuff happens here
             print(event)
         #change bg colour
         gameDisplay.fill(BLUE)
+        box1.update()
+        box2.update()
+        box1.draw(gameDisplay)
+        box2.draw(gameDisplay)
 
         ##sprList.update()
         ##sprList.draw(gameDisplay)
