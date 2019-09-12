@@ -43,8 +43,8 @@ def gameLoop():
     # sprList is list of objects in the room
 
     gameExit = False
-    box1 = Obj(pygame.image.load())#('arts/clamClose.png'))
-    box2 = Obj(pygame.image.load())#('arts/clamClose.png'))
+    box1 = Obj(pygame.image.load('arts/obj1.png'))
+    box2 = Obj(pygame.image.load('arts/obj2.png'))
     sprList.add(box1)
     sprList.add(box2)
 
