@@ -53,8 +53,8 @@ def gameLoop():
 
     gameExit = False
     #loadObj{
-    box1 = Obj('arts/obj1.png', "obj1")
-    box2 = Obj('arts/obj2.png', "obj2")
+    box1 = Obj('../art/obj1.png', "obj1")
+    box2 = Obj('../art/obj2.png', "obj2")
     #}
     uniqueObj = pygame.sprite.Group()
     #load obj {
@@ -64,8 +64,8 @@ def gameLoop():
 
     #loadRooms{
     intro = Room("porch", BLUE)
-    intro.addObj("box1", "box1", (0, 0), 0)
-    intro.addObj("box2", "box2", (200, 200), 0)
+    intro.addObj("obj1", "obj1", (0, 0), 0)
+    intro.addObj("obj2", "obj2", (200, 200), 0)
 
     while not gameExit:
         for event in pygame.event.get():
@@ -73,12 +73,12 @@ def gameLoop():
                 pygame.quit()
                 quit()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                pos = event.pos
-
-                for sprite in sprList:
-                   if sprite.rect.collidepoint(pos):
-                         print("OPEN")
+            # if event.type == pygame.MOUSEBUTTONDOWN:
+            #     pos = event.pos
+            #
+            #     for sprite in uniqueObj:
+            #        if sprite.rect.collidepoint(pos):
+            #              print("OPEN")
                          #stuff happens here
             print(event)
 
@@ -86,9 +86,13 @@ def gameLoop():
         #change bg colour
         gameDisplay.fill(intro.col)
         for o in intro.roomObj:
+            print()
+            print("ST - ", o)
             for s in uniqueObj.sprites():
-                if o.startswith(s):
-                    s.rect.x, s.rect.y = pos
+                print("ST2 - ", s.name)
+                if o.startswith(s.name):
+                    print("FOUND")
+                    s.rect.x, s.rect.y = intro.roomObj[o]
                     s.update()
                     s.draw(gameDisplay)
                     break
