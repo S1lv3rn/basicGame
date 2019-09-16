@@ -84,6 +84,7 @@ def gameLoop():
 
         #displayRoom{
         #change bg colour
+        showObjList = pygame.sprite.Group()
         gameDisplay.fill(intro.col)
         for o in intro.roomObj:
             print()
