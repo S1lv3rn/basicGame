@@ -8,9 +8,9 @@ class Obj(pygame.sprite.Sprite):
 
     def __init__(self, image, name):
         # Call the parent class (Sprite) constructor
-        pygame.sprite.Sprite.__init__(self, )
+        pygame.sprite.Sprite.__init__(self)
 
-        self.image = image.convert_alpha()
+        self.image = pygame.image.load(image).convert_alpha()
         self.rect = self.image.get_rect()
         self.name = name
         self.visible = False
